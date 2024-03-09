@@ -30,8 +30,28 @@
 .bento * {
 }
 
-.bcol {
-    width: var(--third);
+.bcol3rd {
+    width: var(--3rd);
+}
+
+.bcol23rd {
+    width: var(--23rd);
+}
+
+.bcol4r {
+    width: var(--4r);
+}
+
+.bcol24r {
+    width: var(--24r);
+}
+
+.bcol34r {
+    width: var(--34r);
+}
+
+.bcolfw {
+    width: var(--fw);
 }
 
 .bw3rd {
