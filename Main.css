@@ -1,5 +1,35 @@
+:root {
+    /* Primarys */
+    --primary: #8f62d4;
+    --primary-content: #ffffff;
+    --primary-light: #ac8adf;
+    --primary-dark: #723ac9;
+
+    /* Secondary */
+    --secondary: #d4626e;
+    --seconday-content: #2b0c0f;
+    --seconday-light: #df8a93;
+    --seconday-dark: #c93a49;
+
+    /* Neutrals */
+    --foreground: #262428;
+    --background: #19181b;
+    --border: #3f3d43;
+    --copy: #fbfbfb;
+    --copy-light: #d8d7db;
+    --copy-lighter: #a5a1aa;
+
+    /* Utility */
+    --success: #62d462;
+    --warning: #d4d462;
+    --error: #d46262;
+    --success-content: #0c2b0c;
+    --warning-content: #2b2b0c;
+    --error-content: #2b0c0c;
+}
+
 body {
-    background: #1a181b;
+    background: var(--background);
 
     display: flex;
     justify-content: center;
@@ -7,7 +37,13 @@ body {
 
 body * {
     font-family: raleway;
-    color: #fbfbfb;
+    color: var(--copy);
+}
+
+h1,
+h2,
+h3 {
+    width: 100%;
 }
 
 h1 {
@@ -35,10 +71,10 @@ table * {
 }
 
 .bento {
-    background: #272428;
+    background: var(--foreground);
     box-sizing: border-box;
-    border: solid 1px #403d43;
-    box-shadow: 0px 5px 5px -5px rgba(255, 255, 255, 0.4);
+    border: solid 1px var(--border);
+    box-shadow: 0px 3px 2px -1px rgba(255, 255, 255, 0.2);
 }
 
 .bento .image {
@@ -60,4 +96,26 @@ table * {
 }
 
 .bento .itemname {
+}
+
+.condition .faulty,
+.condition .damaged {
+    color: var(--error);
+    font-weight: 900;
+}
+
+.condition .untested {
+    color: var(--warning);
+    font-weight: 700;
+}
+
+.condition .new,
+.condition .likenew,
+.condition .working {
+    color: var(--success);
+    font-weight: 500;
+}
+
+.conditiontable td:first-child {
+    font-weight: 800;
 }

@@ -1,8 +1,8 @@
 :root {
     --bento-buffer: 1vmin;
     --bento-pad: 4vmin;
-    --3rd: calc(33vmin - var(--bento-pad));
-    --23rd: calc(66vmin - var(--bento-pad));
+    --3rd: calc(calc(100vmin / 3) - var(--bento-pad));
+    --23rd: calc(calc((100vmin / 3) * 2) - var(--bento-pad));
     --4r: calc(25vmin - var(--bento-pad));
     --24r: calc(50vmin - var(--bento-pad));
     --34r: calc(75vmin - var(--bento-pad));
