@@ -1,27 +1,50 @@
 :root {
-    --bento-buffer: 1vmin;
-    --bento-pad: 4vmin;
-    --3rd: calc(calc(100vmin / 3) - var(--bento-pad));
-    --23rd: calc(calc((100vmin / 3) * 2) - var(--bento-pad));
-    --4r: calc(25vmin - var(--bento-pad));
-    --24r: calc(50vmin - var(--bento-pad));
-    --34r: calc(75vmin - var(--bento-pad));
-    --fw: calc(100vmin - var(--bento-pad));
+    --root-size: 100vmin;
+    --bento-margin: 1vmin;
+    --bento-buffer: calc(var(--bento-margin) * 2);
+    --bento-pad: 2vmin;
+    --bento-nopad: calc(var(--bento-pad) * 2);
+
+    --1-3: calc(var(--root-size) / 3);
+    --1-4: calc(var(--root-size) / 4);
+
+    --3rd: var(--1-3);
+    --23rd: calc((var(--1-3) * 2));
+    --4r: var(--1-4);
+    --24r: calc((var(--1-4) * 2));
+    --34r: calc((var(--1-4) * 3));
+    --fw: calc(var(--root-size));
+
+    /* --3rd: calc(var(--1-3) - var(--bento-nopad));
+    --23rd: calc((var(--1-3) * 2) - var(--bento-nopad));
+    --4r: calc(var(--1-4) - var(--bento-nopad));
+    --24r: calc((var(--1-4) * 2) - var(--bento-nopad));
+    --34r: calc((var(--1-4) * 3) - var(--bento-nopad));
+    --fw: calc(var(--root-size) - var(--bento-nopad)); */
+
+    /*
+    --3rd: calc(calc(100vmin / 3) - var(--bento-nopad));
+    --23rd: calc(calc((100vmin / 3) * 2) - var(--bento-nopad));
+    --4r: calc(25vmin - var(--bento-nopad));
+    --24r: calc(50vmin - var(--bento-nopad));
+    --34r: calc(75vmin - var(--bento-nopad));
+    --fw: calc(100vmin - var(--bento-nopad)); */
 }
 
 .bentobox {
-    width: 100vmin;
+    width: var(--root-size);
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-content: center;
     align-items: center;
 
+    width: 100vmin;
     max-width: 100vmin;
 }
 
 .bento {
-    margin: var(--bento-buffer);
+    margin: var(--bento-margin);
     border-radius: 2vmin;
     overflow: hidden;
 
@@ -32,7 +55,46 @@
     flex-wrap: wrap;
 }
 
-.bento * {
+.brow {
+    margin: var(--bento-margin);
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-conetent: space-around;
+}
+
+.brow .bento:first-child {
+    margin: 0;
+    margin-right: var(--bento-margin);
+}
+
+.brow .bento:last-child {
+    margin: 0;
+    margin-left: var(--bento-margin);
+}
+
+.bcol {
+    margin: var(--bento-margin);
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-conetent: space-around;
+}
+
+.bcol .bento,
+.bcol .brow,
+.brow .bcol {
+    margin: 0;
+}
+
+.bcol .bento:first-child {
+    margin: 0;
+    margin-bottom: var(--bento-margin);
+}
+
+.bcol .bento:last-child {
+    margin: 0;
+    margin-top: var(--bento-margin);
 }
 
 .bcol3rd {
