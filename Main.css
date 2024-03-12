@@ -11,14 +11,6 @@
     --seconday-light: #df8a93;
     --seconday-dark: #c93a49;
 
-    /* Neutrals */
-    --foreground: #262428;
-    --background: #19181b;
-    --border: #3f3d43;
-    --copy: #fbfbfb;
-    --copy-light: #d8d7db;
-    --copy-lighter: #a5a1aa;
-
     /* Utility */
     --success: #62d462;
     --warning: #d4d462;
@@ -28,6 +20,26 @@
     --error-content: #2b0c0c;
 
     --thumb-size: calc(var(--24r) - var(--bento-buffer) - var(--bento-nopad));
+}
+
+body.dark {
+    /* Neutrals */
+    --foreground: #262428;
+    --background: #19181b;
+    --border: #3f3d43;
+    --copy: #fbfbfb;
+    --copy-light: #d8d7db;
+    --copy-lighter: #a5a1aa;
+}
+
+body.light {
+    /* Neutrals */
+    --foreground: #fbfafc;
+    --background: #efecf3;
+    --border: #ded8e6;
+    --copy: #241e2f;
+    --copy-light: #614f7d;
+    --copy-lighter: #8772a6;
 }
 
 body {
