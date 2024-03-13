@@ -54,6 +54,23 @@ body * {
     color: var(--copy);
 }
 
+body::before {
+    --line: hsl(0 0% 95% / 0.15);
+    content: "";
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background:
+        linear-gradient(90deg, var(--line) 1px, transparent 1px 10vmin) 0 -5vmin /
+            10vmin 10vmin,
+        linear-gradient(var(--line) 1px, transparent 1px 10vmin) 0 -5vmin / 10vmin
+            10vmin;
+    mask: linear-gradient(-15deg, transparent 30%, white);
+    top: 0;
+    z-index: -1;
+    transform: translate3d(0, 0, -100vmin);
+}
+
 h1,
 h2,
 h3 {
@@ -117,22 +134,107 @@ table * {
 .bento .itemname {
 }
 
-.condition .faulty,
-.condition .damaged {
+.condition {
+    position: relative;
+}
+
+.condition .condicon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+}
+
+.condition.faulty .condicon i,
+.condition.damaged .condicon i,
+.condition.untested .condicon i,
+.condition.new .condicon i,
+.condition.likenew .condicon i,
+.condition.working .condicon i {
+    font-size: calc(var(--4r) * 0.75);
+    display: none;
+}
+
+.condition.faulty .condicon .faultycon {
+    display: block;
+}
+
+.condition.damaged .condicon .damagedcon {
+    display: block;
+}
+
+.condition.untested .condicon .untestedcon {
+    display: block;
+}
+
+.condition.new .condicon .newcon {
+    display: block;
+}
+
+.condition.likenew .condicon .likenewcon {
+    display: block;
+}
+
+.condition.working .condicon .workingcon {
+    display: block;
+}
+
+.condition.faulty .condicon .faultycon,
+.condition.damaged .condicon .damagedcon {
+    color: var(--error);
+}
+
+.condition.untested .condicon .untestedcon {
+    color: var(--warning);
+}
+
+.condition.new .condicon .newcon,
+.condition.likenew .condicon .likenewcon,
+.condition.working .condicon .workingcon {
+    color: var(--success);
+}
+
+.condition.faulty h3:before,
+.condition.damaged h3:before {
     color: var(--error);
     font-weight: 900;
 }
 
-.condition .untested {
+.condition.untested h3:before {
     color: var(--warning);
     font-weight: 700;
 }
 
-.condition .new,
-.condition .likenew,
-.condition .working {
+.condition.new h3:before,
+.condition.likenew h3:before,
+.condition.working h3:before {
     color: var(--success);
     font-weight: 500;
+}
+
+.condition.faulty h3:before {
+    content: "FAULTY ITEM";
+}
+
+.condition.damaged h3:before {
+    content: "DAMAGED ITEM";
+}
+
+.condition.untested h3:before {
+    content: "UNTESTED ITEM";
+}
+
+.condition.new h3:before {
+    content: "NEW ITEM";
+}
+
+.condition.likenew h3:before {
+    content: "LIKE NEW ITEM";
+}
+
+.condition.working h3:before {
+    content: "WORKING ITEM";
 }
 
 .conditiontable td:first-child {
@@ -143,8 +245,20 @@ table * {
     height: 100%;
 }
 
-.carouselcont {
+.bento.carouselcont {
     position: relative;
+    padding: 0;
+}
+
+.carouselcont:after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 1rem 1.3rem var(--foreground) inset;
 }
 
 .carousel {
@@ -153,7 +267,6 @@ table * {
     width: 100%;
     margin: 0;
     padding: 0;
-
     list-style-type: none;
 
     display: flex;
@@ -171,6 +284,9 @@ table * {
 
     /* padding-inline: calc(var(--thumb-size));
     scroll-padding-inline: calc(var(--thumb-size) - 1rem); */
+
+    padding-inline: 1rem;
+    scroll-padding-inline: 1rem;
 }
 
 .carousel::-webkit-scrollbar {
@@ -221,6 +337,7 @@ table * {
     left: 50%;
     translate: -50% 0;
     display: flex;
+    z-index: 1;
 }
 
 .indicator {
@@ -370,5 +487,5 @@ table td {
 }
 
 table td:first-child {
-    padding-right: 1em;
+    /* padding-right: 1em; */
 }
