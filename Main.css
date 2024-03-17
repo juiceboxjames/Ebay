@@ -30,6 +30,8 @@ body.dark {
     --copy: #fbfbfb;
     --copy-light: #d8d7db;
     --copy-lighter: #a5a1aa;
+
+    --copy-alpha: #fbfbfb26;
 }
 
 body.light {
@@ -40,6 +42,8 @@ body.light {
     --copy: #241e2f;
     --copy-light: #614f7d;
     --copy-lighter: #8772a6;
+
+    --copy-alpha: #241e2f26;
 }
 
 body {
@@ -55,16 +59,16 @@ body * {
 }
 
 body::before {
-    --line: hsl(0 0% 95% / 0.15);
+    --line: var(--copy-alpha);
     content: "";
     height: 100vh;
     width: 100vw;
     position: fixed;
     background:
-        linear-gradient(90deg, var(--line) 1px, transparent 1px 10vmin) 0 -5vmin /
-            10vmin 10vmin,
-        linear-gradient(var(--line) 1px, transparent 1px 10vmin) 0 -5vmin / 10vmin
-            10vmin;
+        linear-gradient(90deg, var(--line) 1px, transparent 1px 5vmin) 0 -2.5vmin /
+            5vmin 5vmin,
+        linear-gradient(var(--line) 1px, transparent 1px 5vmin) 0 -2.5vmin / 5vmin
+            5vmin;
     mask: linear-gradient(-15deg, transparent 30%, white);
     top: 0;
     z-index: -1;
@@ -143,101 +147,114 @@ table * {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0.2;
+    opacity: 0.8;
 }
 
-.condition.faulty .condicon i,
-.condition.damaged .condicon i,
-.condition.untested .condicon i,
-.condition.new .condicon i,
-.condition.likenew .condicon i,
-.condition.working .condicon i {
-    font-size: calc(var(--4r) * 0.75);
+.faulty .condition .condicon i,
+.damaged .condition .condicon i,
+.untested .condition .condicon i,
+.new .condition .condicon i,
+.likenew .condition .condicon i,
+.working .condition .condicon i {
+    font-size: calc(var(--4r) * 0.6);
     display: none;
 }
 
-.condition.faulty .condicon .faultycon {
+.faulty .condition .condicon .faultycon {
     display: block;
 }
 
-.condition.damaged .condicon .damagedcon {
+.damaged .condition .condicon .damagedcon {
     display: block;
 }
 
-.condition.untested .condicon .untestedcon {
+.untested .condition .condicon .untestedcon {
     display: block;
 }
 
-.condition.new .condicon .newcon {
+.new .condition .condicon .newcon {
     display: block;
 }
 
-.condition.likenew .condicon .likenewcon {
+.likenew .condition .condicon .likenewcon {
     display: block;
 }
 
-.condition.working .condicon .workingcon {
+.working .condition .condicon .workingcon {
     display: block;
 }
 
-.condition.faulty .condicon .faultycon,
-.condition.damaged .condicon .damagedcon {
+.faulty .condition .condicon .faultycon,
+.damaged .condition .condicon .damagedcon {
     color: var(--error);
 }
 
-.condition.untested .condicon .untestedcon {
+.untested .condition .condicon .untestedcon {
     color: var(--warning);
 }
 
-.condition.new .condicon .newcon,
-.condition.likenew .condicon .likenewcon,
-.condition.working .condicon .workingcon {
+.new .condition .condicon .newcon,
+.likenew .condition .condicon .likenewcon,
+.working .condition .condicon .workingcon {
     color: var(--success);
 }
 
-.condition.faulty h3:before,
-.condition.damaged h3:before {
-    color: var(--error);
+.condition h3 {
+    display: block;
+    z-index: 1;
+    vertical-align: bottom;
+    text-align: center;
+
+    position: absolute;
+    left: 0;
+    bottom: 0.5rem;
+    width: 100%;
+}
+
+.faulty .condition h3:before,
+.damaged .condition h3:before {
+    /* color: var(--error); */
     font-weight: 900;
 }
 
-.condition.untested h3:before {
-    color: var(--warning);
+.untested .condition h3:before {
+    /* color: var(--warning); */
     font-weight: 700;
 }
 
-.condition.new h3:before,
-.condition.likenew h3:before,
-.condition.working h3:before {
-    color: var(--success);
+.new .condition h3:before,
+.likenew .condition h3:before,
+.working .condition h3:before {
+    /* color: var(--success); */
     font-weight: 500;
 }
 
-.condition.faulty h3:before {
+.faulty .condition h3:before {
     content: "FAULTY ITEM";
 }
 
-.condition.damaged h3:before {
+.damaged .condition h3:before {
     content: "DAMAGED ITEM";
 }
 
-.condition.untested h3:before {
+.untested .condition h3:before {
     content: "UNTESTED ITEM";
 }
 
-.condition.new h3:before {
+.new .condition h3:before {
     content: "NEW ITEM";
 }
 
-.condition.likenew h3:before {
+.likenew .condition h3:before {
     content: "LIKE NEW ITEM";
 }
 
-.condition.working h3:before {
+.working .condition h3:before {
     content: "WORKING ITEM";
 }
 
-.conditiontable td:first-child {
+.conditiontable td:first-child,
+.spec td:first-child {
     font-weight: 800;
 }
 
