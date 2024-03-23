@@ -1,0 +1,650 @@
+<style type="text/css">
+    :root {
+        /* Primarys */
+        --primary: #8f62d4;
+        --primary-content: #ffffff;
+        --primary-light: #ac8adf;
+        --primary-dark: #723ac9;
+
+        /* Secondary */
+        --secondary: #d4626e;
+        --seconday-content: #2b0c0f;
+        --seconday-light: #df8a93;
+        --seconday-dark: #c93a49;
+
+        /* Utility */
+        --success: #62d462;
+        --warning: #d4d462;
+        --error: #d46262;
+        --success-content: #0c2b0c;
+        --warning-content: #2b2b0c;
+        --error-content: #2b0c0c;
+
+        --thumb-size: calc(
+            var(--24r) - var(--bento-buffer) - var(--bento-nopad)
+        );
+    }
+
+    body.dark {
+        /* Neutrals */
+        --foreground: #262428;
+        --background: #19181b;
+        --border: #3f3d43;
+        --copy: #fbfbfb;
+        --copy-light: #d8d7db;
+        --copy-lighter: #a5a1aa;
+
+        --copy-alpha: #fbfbfb26;
+    }
+
+    body.light {
+        /* Neutrals */
+        --foreground: #fbfafc;
+        --background: #efecf3;
+        --border: #ded8e6;
+        --copy: #241e2f;
+        --copy-light: #614f7d;
+        --copy-lighter: #8772a6;
+
+        --copy-alpha: #241e2f26;
+    }
+
+    body {
+        background: var(--background);
+
+        display: flex;
+        justify-content: center;
+    }
+
+    body * {
+        font-family: raleway;
+        color: var(--copy);
+    }
+
+    body::before {
+        --grid: var(--copy-alpha);
+
+        content: "";
+
+        height: 100vh;
+        width: 100vw;
+
+        position: fixed;
+        top: 0;
+        transform: translate3d(0, 0, -100vmin);
+
+        background:
+            linear-gradient(90deg, var(--grid) 1px, transparent 1px 5vmin) 0 -2.5vmin /
+                5vmin 5vmin,
+            linear-gradient(var(--grid) 1px, transparent 1px 5vmin) 0 -2.5vmin /
+                5vmin 5vmin;
+        mask: linear-gradient(-15deg, transparent 30%, white);
+
+        z-index: -1;
+    }
+
+    h1,
+    h2,
+    h3 {
+        width: 100%;
+    }
+
+    h1 {
+        font-weight: 900;
+        font-size: 5vmin;
+    }
+
+    h2 {
+        font-size: 4vmin;
+    }
+
+    h3 {
+        font-size: 2vmin;
+    }
+
+    p {
+        font-size: 2vmin;
+    }
+
+    table * {
+        font-size: 2vmin;
+    }
+
+    .bentobox {
+    }
+
+    .bento {
+        background: var(--foreground);
+        box-sizing: border-box;
+        border: solid 1px var(--border);
+        box-shadow: 0px 3px 2px -1px rgba(255, 255, 255, 0.2);
+    }
+
+    .bento .image {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+
+    .bento h1,
+    .bento h2,
+    .bento h3,
+    .bento p,
+    .bento li,
+    .bento tr {
+        margin-top: 0;
+    }
+
+    .bento .image img {
+        width: 80%;
+        height: 80%;
+    }
+
+    .bento .itemname {
+    }
+
+    .condition {
+        position: relative;
+    }
+
+    .condition .condicon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% - 2vmin));
+    }
+
+    .faulty .condition .condicon i,
+    .damaged .condition .condicon i,
+    .untested .condition .condicon i,
+    .new .condition .condicon i,
+    .likenew .condition .condicon i,
+    .working .condition .condicon i {
+        font-size: calc(var(--4r) * 0.6);
+        display: none;
+    }
+
+    .faulty .condition .condicon .faultycon {
+        display: block;
+    }
+
+    .damaged .condition .condicon .damagedcon {
+        display: block;
+    }
+
+    .untested .condition .condicon .untestedcon {
+        display: block;
+    }
+
+    .new .condition .condicon .newcon {
+        display: block;
+    }
+
+    .likenew .condition .condicon .likenewcon {
+        display: block;
+    }
+
+    .working .condition .condicon .workingcon {
+        display: block;
+    }
+
+    .faulty .condition .condicon .faultycon,
+    .damaged .condition .condicon .damagedcon {
+        color: var(--error);
+    }
+
+    .untested .condition .condicon .untestedcon {
+        color: var(--warning);
+    }
+
+    .new .condition .condicon .newcon,
+    .likenew .condition .condicon .likenewcon,
+    .working .condition .condicon .workingcon {
+        color: var(--success);
+    }
+
+    .condition h3 {
+        display: block;
+        z-index: 1;
+        vertical-align: bottom;
+        text-align: center;
+
+        position: absolute;
+        left: 0;
+        bottom: 2vmin;
+        width: 100%;
+    }
+
+    .condition h3:before {
+        font-weight: 900;
+    }
+
+    .faulty .condition h3:before {
+        content: "FAULTY ITEM";
+    }
+
+    .damaged .condition h3:before {
+        content: "DAMAGED ITEM";
+    }
+
+    .untested .condition h3:before {
+        content: "UNTESTED ITEM";
+    }
+
+    .new .condition h3:before {
+        content: "NEW ITEM";
+    }
+
+    .likenew .condition h3:before {
+        content: "LIKE NEW ITEM";
+    }
+
+    .working .condition h3:before {
+        content: "WORKING ITEM";
+    }
+
+    .conditiontable td:first-child,
+    .spec td:first-child {
+        font-weight: 800;
+    }
+
+    .thumbnail {
+        height: 100%;
+    }
+
+    .bento.carouselcont {
+        position: relative;
+        padding: 0;
+    }
+
+    .carouselcont:after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 1rem 1.3rem var(--foreground) inset;
+    }
+
+    .carousel {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+
+        display: flex;
+        gap: var(--bento-pad);
+        scroll-snap-type: x mandatory;
+        max-width: 100%;
+        list-style-type: none;
+        overflow: auto;
+        height: 100%;
+        align-content: center;
+        align-items: center;
+        scroll-behavior: smooth;
+        scrollbar-height: none;
+        -ms-overflow-style: none;
+
+        padding-inline: var(--bento-pad);
+        scroll-padding-inline: var(--bento-pad);
+    }
+
+    .carousel::-webkit-scrollbar {
+        display: none;
+        height: 0;
+        scrollbar-height: none;
+        -ms-overflow-style: none;
+    }
+
+    .carousel li {
+        scroll-snap-align: center;
+        position: relative;
+        height: var(--thumb-size);
+    }
+
+    .carousel__indicators {
+        height: 0.5em;
+        position: absolute;
+        bottom: calc(var(--bento-pad) + 0.5em);
+        left: 50%;
+        translate: -50% 0;
+        display: flex;
+        z-index: 1;
+    }
+
+    .indicator {
+        --color: hsl(var(--hue, 0) 0% 86%);
+        background: linear-gradient(var(--color), var(--color)) padding-box;
+        flex: 1;
+        border-radius: 2em;
+        height: 100%;
+        min-width: 0.5em;
+        cursor: pointer;
+        padding: 0;
+        position: relative;
+        border: 4px solid transparent;
+    }
+
+    .indicator::after {
+        content: "";
+        border-radius: 1em;
+        position: absolute;
+        inset: 0;
+        background: var(--success);
+    }
+
+    table td {
+        padding-bottom: 0.2em;
+    }
+</style>
+
+<style type="text/css">
+    :root {
+        --root-size: 100vmin;
+        --bento-margin: 0.5rem;
+        --bento-buffer: calc(var(--bento-margin) * 2);
+        --bento-pad: 2rem;
+        --bento-nopad: calc(var(--bento-pad) * 2);
+
+        --1-3: calc(var(--root-size) / 3);
+        --1-4: calc(var(--root-size) / 4);
+
+        --3rd: var(--1-3);
+        --23rd: calc((var(--1-3) * 2));
+        --4r: var(--1-4);
+        --24r: calc((var(--1-4) * 2));
+        --34r: calc((var(--1-4) * 3));
+        --fw: calc(var(--root-size));
+
+        /* --3rd: calc(var(--1-3) - var(--bento-nopad));
+    --23rd: calc((var(--1-3) * 2) - var(--bento-nopad));
+    --4r: calc(var(--1-4) - var(--bento-nopad));
+    --24r: calc((var(--1-4) * 2) - var(--bento-nopad));
+    --34r: calc((var(--1-4) * 3) - var(--bento-nopad));
+    --fw: calc(var(--root-size) - var(--bento-nopad)); */
+
+        /*
+    --3rd: calc(calc(100vmin / 3) - var(--bento-nopad));
+    --23rd: calc(calc((100vmin / 3) * 2) - var(--bento-nopad));
+    --4r: calc(25vmin - var(--bento-nopad));
+    --24r: calc(50vmin - var(--bento-nopad));
+    --34r: calc(75vmin - var(--bento-nopad));
+    --fw: calc(100vmin - var(--bento-nopad)); */
+    }
+
+    .bentobox {
+        width: var(--root-size);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+
+        width: 100vmin;
+        max-width: 100vmin;
+    }
+
+    .bento {
+        margin: var(--bento-margin);
+        border-radius: 2vmin;
+        overflow: hidden;
+
+        padding: var(--bento-pad);
+
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+
+    .brow {
+        margin: var(--bento-margin);
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        align-conetent: space-around;
+    }
+
+    .brow .bento:first-child {
+        margin: 0;
+        margin-right: var(--bento-margin);
+    }
+
+    .brow .bento:last-child {
+        margin: 0;
+        margin-left: var(--bento-margin);
+    }
+
+    .bcol {
+        margin: var(--bento-margin);
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        align-conetent: space-around;
+    }
+
+    .bcol .bento,
+    .bcol .brow,
+    .brow .bcol {
+        margin: 0;
+    }
+
+    .bcol .bento:first-child {
+        margin: 0;
+        margin-bottom: var(--bento-margin);
+    }
+
+    .bcol .bento:last-child {
+        margin: 0;
+        margin-top: var(--bento-margin);
+    }
+
+    .bcol3rd {
+        width: var(--3rd);
+    }
+
+    .bcol23rd {
+        width: var(--23rd);
+    }
+
+    .bcol4r {
+        width: var(--4r);
+    }
+
+    .bcol24r {
+        width: var(--24r);
+    }
+
+    .bcol34r {
+        width: var(--34r);
+    }
+
+    .bcolfw {
+        width: var(--fw);
+    }
+
+    .bw3rd {
+        width: calc(var(--3rd) - var(--bento-buffer));
+    }
+
+    .bw23rd {
+        width: calc(var(--23rd) - var(--bento-buffer));
+    }
+
+    .bw4r {
+        width: calc(var(--4r) - var(--bento-buffer));
+    }
+
+    .bw24r {
+        width: calc(var(--24r) - var(--bento-buffer));
+    }
+
+    .bw34r {
+        width: calc(var(--34r) - var(--bento-buffer));
+    }
+
+    .bwfw {
+        width: calc(var(--fw) - var(--bento-buffer));
+    }
+
+    .bh3rd {
+        height: calc(var(--3rd) - var(--bento-buffer));
+    }
+
+    .bh23rd {
+        height: calc(var(--23rd) - var(--bento-buffer));
+    }
+
+    .bh4r {
+        height: calc(var(--4r) - var(--bento-buffer));
+    }
+
+    .bh24r {
+        height: calc(var(--24r) - var(--bento-buffer));
+    }
+
+    .bh34r {
+        height: calc(var(--34r) - var(--bento-buffer));
+    }
+
+    .bhfw {
+        height: calc(var(--fw) - var(--bento-buffer));
+    }
+</style>
+
+<style type="text/css">
+    @supports (animation-timeline: scroll()) {
+        .countone.carouselcont {
+            timeline-scope: --one;
+        }
+
+        .counttwo.carouselcont {
+            timeline-scope: --one, --two;
+        }
+
+        .countthree.carouselcont {
+            timeline-scope: --one, --two, --three;
+        }
+
+        .countfour.carouselcont {
+            timeline-scope: --one, --two, --three, --four;
+        }
+
+        .countfice.carouselcont {
+            timeline-scope: --one, --two, --three, --four, --five;
+        }
+
+        .countsix.carouselcont {
+            timeline-scope: --one, --two, --three, --four, --five, --six;
+        }
+
+        .carousel__indicators {
+            aspect-ratio: 15 / 1;
+        }
+
+        .countsix li:nth-of-type(1) {
+            view-timeline: --one inline;
+        }
+
+        .countsix li:nth-of-type(2) {
+            view-timeline: --two inline;
+        }
+
+        .countsix li:nth-of-type(3) {
+            view-timeline: --three inline;
+        }
+
+        .countsix li:nth-of-type(4) {
+            view-timeline: --four inline;
+        }
+
+        .countsix li:nth-of-type(5) {
+            view-timeline: --five inline;
+        }
+
+        .countsix li:nth-of-type(6) {
+            view-timeline: --six inline;
+        }
+
+        .countsix .indicator {
+            --buffer: calc(var(--thumb-size) * 0.9);
+            animation: blink both linear;
+            animation-range: contain calc(50% - var(--buffer)) contain
+                calc(50% + var(--buffer));
+        }
+
+        .countsix .indicator:nth-of-type(1) {
+            animation-timeline: --one;
+        }
+
+        .countsix .indicator:nth-of-type(2) {
+            animation-timeline: --two;
+        }
+
+        .countsix .indicator:nth-of-type(3) {
+            animation-timeline: --three;
+        }
+
+        .countsix .indicator:nth-of-type(4) {
+            animation-timeline: --four;
+        }
+
+        .countsix .indicator:nth-of-type(5) {
+            animation-timeline: --five;
+        }
+
+        .countsix .indicator:nth-of-type(6) {
+            animation-timeline: --six;
+        }
+
+        @keyframes blink {
+            50% {
+                flex: 3;
+            }
+        }
+
+        .countsix .indicator::after {
+            --buffer: calc(var(--thumb-size) * 0.9);
+            opacity: 0;
+            animation: show both linear;
+            animation-range: contain calc(50% - var(--buffer)) contain
+                calc(50% + var(--buffer));
+        }
+
+        .countsix .indicator:nth-of-type(1)::after {
+            animation-timeline: --one;
+        }
+
+        .countsix .indicator:nth-of-type(2)::after {
+            animation-timeline: --two;
+        }
+
+        .countsix .indicator:nth-of-type(3)::after {
+            animation-timeline: --three;
+        }
+
+        .countsix .indicator:nth-of-type(4)::after {
+            animation-timeline: --four;
+        }
+
+        .countsix .indicator:nth-of-type(5)::after {
+            animation-timeline: --five;
+        }
+
+        .countsix .indicator:nth-of-type(6)::after {
+            animation-timeline: --six;
+        }
+
+        @keyframes show {
+            50% {
+                opacity: 1;
+            }
+        }
+    }
+</style>
