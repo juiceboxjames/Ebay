@@ -146,7 +146,7 @@ table * {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, calc(-50% - 2vmin));
     opacity: 0.8;
 }
 
@@ -207,7 +207,7 @@ table * {
 
     position: absolute;
     left: 0;
-    bottom: 0.5rem;
+    bottom: 2vmin;
     width: 100%;
 }
 
@@ -319,34 +319,6 @@ table * {
     height: var(--thumb-size);
 }
 
-:is(li, .indicator):nth-of-type(1) {
-    --hue: 0;
-}
-
-:is(li, .indicator):nth-of-type(2) {
-    --hue: 200;
-}
-
-:is(li, .indicator):nth-of-type(3) {
-    --hue: 45;
-}
-
-:is(li, .indicator):nth-of-type(4) {
-    --hue: 210;
-}
-
-:is(li, .indicator):nth-of-type(5) {
-    --hue: 280;
-}
-
-:is(li, .indicator):nth-of-type(6) {
-    --hue: 280;
-}
-
-:is(li, .indicator):nth-of-type(7) {
-    --hue: 280;
-}
-
 .carousel__indicators {
     height: 0.5em;
     position: absolute;
@@ -378,131 +350,6 @@ table * {
     background: var(--success);
 }
 
-@supports (animation-timeline: scroll()) {
-    .carouselcont {
-        timeline-scope: --one, --two, --three, --four, --five, --six, --seven;
-    }
-
-    .carousel__indicators {
-        aspect-ratio: 15 / 1;
-    }
-
-    li:nth-of-type(1) {
-        view-timeline: --one inline;
-    }
-
-    li:nth-of-type(2) {
-        view-timeline: --two inline;
-    }
-
-    li:nth-of-type(3) {
-        view-timeline: --three inline;
-    }
-
-    li:nth-of-type(4) {
-        view-timeline: --four inline;
-    }
-
-    li:nth-of-type(5) {
-        view-timeline: --five inline;
-    }
-
-    li:nth-of-type(6) {
-        view-timeline: --six inline;
-    }
-
-    li:nth-of-type(7) {
-        view-timeline: --seven inline;
-    }
-
-    .indicator {
-        --buffer: calc(var(--thumb-size) * 0.9);
-        animation: blink both linear;
-        animation-range: contain calc(50% - var(--buffer)) contain
-            calc(50% + var(--buffer));
-    }
-
-    .indicator:nth-of-type(1) {
-        animation-timeline: --one;
-    }
-
-    .indicator:nth-of-type(2) {
-        animation-timeline: --two;
-    }
-
-    .indicator:nth-of-type(3) {
-        animation-timeline: --three;
-    }
-
-    .indicator:nth-of-type(4) {
-        animation-timeline: --four;
-    }
-
-    .indicator:nth-of-type(5) {
-        animation-timeline: --five;
-    }
-
-    .indicator:nth-of-type(6) {
-        animation-timeline: --six;
-    }
-
-    .indicator:nth-of-type(7) {
-        animation-timeline: --seven;
-    }
-
-    @keyframes blink {
-        50% {
-            flex: 3;
-        }
-    }
-
-    .indicator::after {
-        --buffer: calc(var(--thumb-size) * 0.9);
-        opacity: 0;
-        animation: show both linear;
-        animation-range: contain calc(50% - var(--buffer)) contain
-            calc(50% + var(--buffer));
-    }
-
-    .indicator:nth-of-type(1)::after {
-        animation-timeline: --one;
-    }
-
-    .indicator:nth-of-type(2)::after {
-        animation-timeline: --two;
-    }
-
-    .indicator:nth-of-type(3)::after {
-        animation-timeline: --three;
-    }
-
-    .indicator:nth-of-type(4)::after {
-        animation-timeline: --four;
-    }
-
-    .indicator:nth-of-type(5)::after {
-        animation-timeline: --five;
-    }
-
-    .indicator:nth-of-type(6)::after {
-        animation-timeline: --six;
-    }
-
-    .indicator:nth-of-type(7)::after {
-        animation-timeline: --seven;
-    }
-
-    @keyframes show {
-        50% {
-            opacity: 1;
-        }
-    }
-}
-
 table td {
     padding-bottom: 0.2em;
-}
-
-table td:first-child {
-    /* padding-right: 1em; */
 }
