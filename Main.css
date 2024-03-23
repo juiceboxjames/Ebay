@@ -59,20 +59,25 @@ body * {
 }
 
 body::before {
-    --line: var(--copy-alpha);
+    --grid: var(--copy-alpha);
+
     content: "";
+
     height: 100vh;
     width: 100vw;
+
     position: fixed;
+    top: 0;
+    transform: translate3d(0, 0, -100vmin);
+
     background:
-        linear-gradient(90deg, var(--line) 1px, transparent 1px 5vmin) 0 -2.5vmin /
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px 5vmin) 0 -2.5vmin /
             5vmin 5vmin,
-        linear-gradient(var(--line) 1px, transparent 1px 5vmin) 0 -2.5vmin / 5vmin
+        linear-gradient(var(--grid) 1px, transparent 1px 5vmin) 0 -2.5vmin / 5vmin
             5vmin;
     mask: linear-gradient(-15deg, transparent 30%, white);
-    top: 0;
+
     z-index: -1;
-    transform: translate3d(0, 0, -100vmin);
 }
 
 h1,
@@ -147,7 +152,6 @@ table * {
     top: 50%;
     left: 50%;
     transform: translate(-50%, calc(-50% - 2vmin));
-    opacity: 0.8;
 }
 
 .faulty .condition .condicon i,
@@ -211,22 +215,8 @@ table * {
     width: 100%;
 }
 
-.faulty .condition h3:before,
-.damaged .condition h3:before {
-    /* color: var(--error); */
+.condition h3:before {
     font-weight: 900;
-}
-
-.untested .condition h3:before {
-    /* color: var(--warning); */
-    font-weight: 700;
-}
-
-.new .condition h3:before,
-.likenew .condition h3:before,
-.working .condition h3:before {
-    /* color: var(--success); */
-    font-weight: 500;
 }
 
 .faulty .condition h3:before {
@@ -287,7 +277,7 @@ table * {
     list-style-type: none;
 
     display: flex;
-    gap: 1rem;
+    gap: var(--bento-pad);
     scroll-snap-type: x mandatory;
     max-width: 100%;
     list-style-type: none;
@@ -299,11 +289,8 @@ table * {
     scrollbar-height: none;
     -ms-overflow-style: none;
 
-    /* padding-inline: calc(var(--thumb-size));
-    scroll-padding-inline: calc(var(--thumb-size) - 1rem); */
-
-    padding-inline: 1rem;
-    scroll-padding-inline: 1rem;
+    padding-inline: var(--bento-pad);
+    scroll-padding-inline: var(--bento-pad);
 }
 
 .carousel::-webkit-scrollbar {
