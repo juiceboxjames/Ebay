@@ -4,7 +4,7 @@ Razer Blade 14” (2017) - Intel 7700HQ GTX1060 | RZ09-01953W53
 
 Faulty
 Recommended for parts as system seems to be intermittent on how well it works. Buy with caution understanding the system may not boot.
-If system boots, GPU will not detect properly in system. BIOS seems to be wrong or corrupt as well. Internally thermal pads not present, as temporary replaced with thermal paste but if intended for usage as a system will need to be replaced with pads again.
+If system boots, GPU will not detect properly in system. BIOS seems to be wrong or corrupt as well. Internally thermal pads not present, as temporarily replaced with thermal paste but if intended for usage as a system will need to be replaced with pads again.
 
 Condition:
 Some cosmetic damage, most prominent on the top case of the screen, please reference the images for a detailed view.
