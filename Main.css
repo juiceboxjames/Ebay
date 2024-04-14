@@ -19,7 +19,7 @@
     --warning-content: #2b2b0c;
     --error-content: #2b0c0c;
 
-    --thumb-size: calc(var(--24r) - var(--bento-buffer) - var(--bento-nopad));
+    --thumb-size: calc(var(--23rd) - var(--bento-buffer) - var(--bento-nopad));
 }
 
 body.dark {
@@ -58,7 +58,7 @@ body * {
     color: var(--copy);
 }
 
-body::before {
+/* body::before {
     --grid: var(--copy-alpha);
 
     content: "";
@@ -78,7 +78,7 @@ body::before {
     mask: linear-gradient(-15deg, transparent 30%, white);
 
     z-index: -1;
-}
+} */
 
 h1,
 h2,

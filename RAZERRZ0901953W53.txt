@@ -1,7 +1,15 @@
 Notes for RAZERRZ0901953W53
 
+Razer Blade 14” (2017) - Intel 7700HQ GTX1060 | RZ09-01953W53
 
-Spec
+Faulty
+Recommended for parts as system seems to be intermittent on how well it works. Buy with caution understanding the system may not boot.
+If system boots, GPU will not detect properly in system. BIOS seems to be wrong or corrupt as well. Internally thermal pads not present, as temporary replaced with thermal paste but if intended for usage as a system will need to be replaced with pads again.
+
+Condition:
+Some cosmetic damage, most prominent on the top case of the screen, please reference the images for a detailed view.
+
+Specification off Razer's website:
 Model Name              Blade 14” (2017) - Intel 7700HQ- GTX1060
 Display                 14 in IPS Full HD Matte, 16:9 Ratio, 1920x1080, with LED backlight
 Graphics                NVIDIA® GeForce® GTX 1060 (6GB GDDR5 VRAM)
@@ -28,3 +36,6 @@ Power & Battery         Compact 165W power adapter
                         Built-in 70Wh rechargeable lithium-ion polymer battery
 Approx. Size            0.70 in / 17.9 mm (height) x 13.6 in / 345 mm (width) x 9.3 in / 235 mm (depth)
 Approx. Weight          4.10 lbs / 1.86 kg
+
+
+Returns not accepted unless item is not as described. Please contact within 30 days of delivery to arrange for a return.
