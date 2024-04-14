@@ -1,0 +1,30 @@
+Notes for RAZERRZ0901953W53
+
+
+Spec
+Model Name              Blade 14” (2017) - Intel 7700HQ- GTX1060
+Display                 14 in IPS Full HD Matte, 16:9 Ratio, 1920x1080, with LED backlight
+Graphics                NVIDIA® GeForce® GTX 1060 (6GB GDDR5 VRAM)
+Processor               Intel® Core™ i7-7700HQ Quad-Core Processor with Hyper-Threading 2.8GHz / 3.8GHz (Base/Turbo)
+Chipset                 Mobile Intel® PCHM 100-series chipset, HM175
+Memory                  16GB dual-channel onboard memory (DDR4, 2400MHz)
+Operating System        Windows 10 (64-Bit)
+Storage                 256GB SSD (PCle M.2)
+Communication           Killer™ Wireless-AC 1535 (802.11a/b/g/n/ac + Bluetooth® 4.1)
+Input & Output          Built-in webcam (2.0 MP)
+                        Anti-ghosting keyboard with Chroma backlighting
+                        Thunderbolt™ 3 (USB-C™)
+                        USB 3.0 port x3 (SuperSpeed)
+                        HDMI audio and video (4K at 60Hz) output
+                        3.5mm headphone and microphone combo port
+Audio                   Built-in stereo speakers
+                        Array Microphone
+                        Dolby® Digital Plus Home Theater Edition
+                        7.1 Codec support (via HDMI)
+Additional Features     Razer™ Synapse 2.0 enabled with programmable Keyboard, trackpad, backlight, and fan speed.
+                        Kensington™ Security Slot
+                        Trusted platform module (TPM 2.0) security chip embedded
+Power & Battery         Compact 165W power adapter
+                        Built-in 70Wh rechargeable lithium-ion polymer battery
+Approx. Size            0.70 in / 17.9 mm (height) x 13.6 in / 345 mm (width) x 9.3 in / 235 mm (depth)
+Approx. Weight          4.10 lbs / 1.86 kg
